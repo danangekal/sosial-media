@@ -1,0 +1,36 @@
+.menu-primary {
+  background-color: darkgreen !important;
+  padding-left: 65px !important;
+  padding-right: 75px !important;
+}
+
+.dd-profile {
+  color: white !important;
+  margin: 15px;
+}
+
+.menu-primary-login {
+  background-color: darkgreen !important;
+  padding-left: 65px !important;
+  padding-right: 75px !important;
+}
+
+.form-login {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.input-custom {
+  margin-right: 10px !important;
+  margin-left: 10px !important;
+}
+
+.button-login {
+  padding-top: 25px !important;
+}
+
+@keyframes back-to-docs {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(0.35em); }
+  100% { transform: translateY(0); }
+}
