@@ -17,7 +17,7 @@ export const Routes = (props) => {
   const login = {id: 1, name: 'Leanne Graham', username: 'Bret', email: 'Sincere@april.biz'};
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div>
         <Navbar login={login}/>
         <div>
