@@ -29,7 +29,7 @@ export default class Post extends Component {
                     <List.Content floated='right'>
                       <Button as={Link} to={`/posts/${item.id}`} color='green'>View</Button>
                     </List.Content>
-                    <Image circular size='mini' as={Link} to={`/posts/${item.id}`} src='/matthew.png' />
+                    <Image circular size='mini' as={Link} to={`/posts/${item.id}`} src={process.env.PUBLIC_URL + '/matthew.png'} />
                     <List.Content>
                       <List.Header as={Link} to={`/profile/${item.user.id}`}>{item.user.name}</List.Header>
                       <List.Description>{item.user.email}</List.Description>

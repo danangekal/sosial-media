@@ -9,7 +9,7 @@ export default class Profile extends Component {
     return(      
       <div>
         <Card>
-          <Image src='/matthew.png' />
+          <Image src={process.env.PUBLIC_URL + '/matthew.png'} />
           <Card.Content>
             <Card.Header>{profile.username}</Card.Header>
             <Card.Meta>

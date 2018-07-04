@@ -20,7 +20,7 @@ export default class Content extends Component {
                 <Loader inverted content='Loading' />
               </Dimmer>
 
-              <Image src='/media-paragraph.png' />
+              <Image src={process.env.PUBLIC_URL + '/media-paragraph.png'} />
             </Segment>
           ):(
             <div>

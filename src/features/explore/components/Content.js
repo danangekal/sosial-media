@@ -21,7 +21,7 @@ export default class Content extends Component {
                 <Loader inverted content='Loading' />
               </Dimmer>
 
-              <Image src='/paragraph.png' />
+              <Image src={process.env.PUBLIC_URL + '/paragraph.png'} />
             </Segment>
           ):(
             <div>
@@ -36,7 +36,7 @@ export default class Content extends Component {
                     header={item.title} 
                     description={(
                       <Label as={Link} to={`/profile/${item.userId}`} color='teal' image>
-                        <Image src='/matthew.png' />
+                        <Image src={process.env.PUBLIC_URL + '/matthew.png'} />
                         {item.user.name}
                       </Label>
                     )} 

@@ -21,7 +21,7 @@ export default class Content extends Component {
                 <Loader inverted content='Loading' />
               </Dimmer>
 
-              <Image src='/paragraph.png' />
+              <Image src={process.env.PUBLIC_URL + '/paragraph.png'} />
             </Segment>
           ):(
             <div>
@@ -34,7 +34,7 @@ export default class Content extends Component {
                 {friends.map((item)=> (
                   <Card color='green' key={item.id} link>
                     <Card.Content>
-                      <Image as={Link} to={`/profile/${item.id}`} floated='right' size='mini' src='/matthew.png' />
+                      <Image as={Link} to={`/profile/${item.id}`} floated='right' size='mini' src={process.env.PUBLIC_URL + '/matthew.png'} />
                       <Card.Header><Link to={`/profile/${item.id}`}>{item.username}</Link></Card.Header>
                       <Card.Meta>{item.name}</Card.Meta>
                     </Card.Content>

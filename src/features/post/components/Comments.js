@@ -15,7 +15,7 @@ export default class Comments extends Component {
           </Header>
           {comments.map((item)=> (
               <Comment key={item.id}>
-                <Comment.Avatar as={Link} to={`/profile/${user.id}`} src='/matthew.png' />
+                <Comment.Avatar as={Link} to={`/profile/${user.id}`} src={process.env.PUBLIC_URL + '/matthew.png'} />
                 <Comment.Content>
                   <Comment.Author>{item.name}</Comment.Author>
                   <Comment.Metadata>

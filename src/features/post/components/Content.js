@@ -23,7 +23,7 @@ export default class Content extends Component {
                 <Loader inverted content='Loading' />
               </Dimmer>
 
-              <Image src='/media-paragraph.png' />
+              <Image src={process.env.PUBLIC_URL + '/media-paragraph.png'} />
             </Segment>
           ):(
             <div>
@@ -32,7 +32,7 @@ export default class Content extends Component {
                   <Card.Content>
                     <List relaxed='very'>
                       <List.Item>
-                        <Image circular size='mini' as={Link} to={`/profile/${post.user.id}`} src='/matthew.png' />
+                        <Image circular size='mini' as={Link} to={`/profile/${post.user.id}`} src={process.env.PUBLIC_URL + '/matthew.png'} />
                         <List.Content>
                           <List.Header as={Link} to={`/profile/${post.user.id}`}>{post.user.name}</List.Header>
                           <List.Description>{post.user.email}</List.Description>
