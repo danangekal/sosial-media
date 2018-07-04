@@ -32,7 +32,7 @@ export default class Content extends Component {
               <Divider inverted />
               <Card.Group itemsPerRow={3}>
                 {explores.map((item)=> (
-                  <Card color='green' key={item.id} image='/image.png' 
+                  <Card color='green' key={item.id} image={process.env.PUBLIC_URL + '/image.png'} 
                     header={item.title} 
                     description={(
                       <Label as={Link} to={`/profile/${item.userId}`} color='teal' image>

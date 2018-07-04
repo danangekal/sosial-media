@@ -16,7 +16,7 @@ export default class Albums extends Component {
         <Divider inverted />
         <Card.Group itemsPerRow={4}>
           {albums.map((item)=> (
-            <Card color='green' raised key={item.id} image='/image.png' description={item.title} extra={(<div><Link to={`/albums/${item.id}`}><Icon name='picture' circular /> {item.photos.length} Photos</Link></div>)} />
+            <Card color='green' raised key={item.id} image={process.env.PUBLIC_URL + '/image.png'} description={item.title} extra={(<div><Link to={`/albums/${item.id}`}><Icon name='picture' circular /> {item.photos.length} Photos</Link></div>)} />
           ))}
         </Card.Group>
       </div>
