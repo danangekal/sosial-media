@@ -17,7 +17,7 @@ export default class Friends extends Component {
             <Feed>
             {friends.map((item)=> (
               <Feed.Event key={item.id}>
-                <Feed.Label image='/matthew.png' as={Link} to={`/profile/${item.id}`} />
+                <Feed.Label image={process.env.PUBLIC_URL + '/matthew.png'} as={Link} to={`/profile/${item.id}`} />
                 <Feed.Content>
                   <Feed.Summary>
                     <Link to={`/profile/${item.id}`}>{item.name}</Link>
