@@ -32,7 +32,7 @@ export default class Content extends Component {
                 <Header.Content>News</Header.Content>
               </Header>
               <Divider inverted />
-              <Post {...this.props} onSubmit={handleSubmitPost} posts={posts}  />
+              <Post {...this.props} onSubmit={handleSubmitPost} posts={posts} />
             </div>
           )}
         </Segment>

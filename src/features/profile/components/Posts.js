@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Image, List, Button } from 'semantic-ui-react';
 
 export default class Post extends Component {
 
   render() {
-    const { posts } = this.props;
+    const { posts, profile } = this.props;
 
     return(      
       <div>
@@ -15,13 +16,13 @@ export default class Post extends Component {
                 <List relaxed='very'>
                   <List.Item>
                     <List.Content floated='right'>
-                      <Button href={'/posts/'+item.id} color='green'>View</Button>
+                      <Button as={Link} to={`/posts/${item.id}`} color='green'>View</Button>
                       <Button color='red'>Delete</Button>
                     </List.Content>
-                    <Image avatar src='/matthew.png' />
+                    <Image circular size='mini' as={Link} to={`/profile/${profile.id}`} src='/matthew.png' />
                     <List.Content>
-                      <List.Header as='a' href={'/profile/'+item.id}>{item.name}</List.Header>
-                      <List.Description>{item.email}</List.Description>
+                      <List.Header as={Link} to={`/profile/${profile.id}`}>{profile.name}</List.Header>
+                      <List.Description>{profile.email}</List.Description>
                     </List.Content>
                   </List.Item>
                 </List>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -17,7 +17,7 @@ export const Routes = (props) => {
   const login = {id: 1, name: 'Leanne Graham', username: 'Bret', email: 'Sincere@april.biz'};
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <Router>
       <div>
         <Navbar login={login}/>
         <div>
@@ -40,6 +40,6 @@ export const Routes = (props) => {
         </div>
         <Footer />
       </div>
-    </BrowserRouter>
+    </Router>
   )
 }

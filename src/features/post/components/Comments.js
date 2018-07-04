@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Header, Form, Button, Comment } from 'semantic-ui-react';
 
 export default class Comments extends Component {
 
   render() {
-    const { comments } = this.props;
+    const { comments, user } = this.props;
 
     return(
       <Card.Content extra>
@@ -14,11 +15,11 @@ export default class Comments extends Component {
           </Header>
           {comments.map((item)=> (
               <Comment key={item.id}>
-                <Comment.Avatar as='a' src='/matthew.png' />
+                <Comment.Avatar as={Link} to={`/profile/${user.id}`} src='/matthew.png' />
                 <Comment.Content>
-                  <Comment.Author as='a'>{item.name}</Comment.Author>
+                  <Comment.Author>{item.name}</Comment.Author>
                   <Comment.Metadata>
-                    <span>({item.email})</span>
+                    <span>{user.name} ({item.email})</span>
                   </Comment.Metadata>
                   <Comment.Text>{item.body}</Comment.Text>
                 </Comment.Content>

@@ -41,7 +41,7 @@ export default class Content extends Component {
                 </Grid.Row>
               </Grid>
               <Divider inverted />
-              <Posts posts={posts} />
+              <Posts posts={posts} profile={profile} />
             </div>
           )}
         </Segment>

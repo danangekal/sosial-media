@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Segment, Card, Message, Dimmer, Loader, Image, Header, Icon, Divider } from 'semantic-ui-react';
 
 export default class Content extends Component {
@@ -35,8 +36,8 @@ export default class Content extends Component {
                     image={(
                       <Image
                         src={item.thumbnailUrl}
-                        as='a'
-                        href={'/photos/'+item.id}
+                        as={Link}
+                        to={`/photos/${item.id}`}
                       />
                     )}
                   />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Card, Feed } from 'semantic-ui-react';
 
 export default class Friends extends Component {
@@ -17,10 +17,10 @@ export default class Friends extends Component {
             <Feed>
             {friends.map((item)=> (
               <Feed.Event key={item.id}>
-                <Feed.Label image='/matthew.png' />
+                <Feed.Label image='/matthew.png' as={Link} to={`/profile/${item.id}`} />
                 <Feed.Content>
                   <Feed.Summary>
-                    <NavLink to={'/profile/'+item.id}>{item.name}</NavLink>
+                    <Link to={`/profile/${item.id}`}>{item.name}</Link>
                   </Feed.Summary>
                 </Feed.Content>
               </Feed.Event>

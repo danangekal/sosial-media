@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { Input, Menu, Icon} from 'semantic-ui-react';
 
 export default class Navbar extends Component {
@@ -25,26 +26,40 @@ export default class Navbar extends Component {
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
         </Menu.Menu>
-        <Menu.Item name='home' as={Link} to='/home'
+        <Menu.Item
+          name='home'
+          as={Link}
+          to='home'
           // active={activeItem === 'home'}
           // onClick={this.handleItemClick}
         >
           Home
+          {/* <NavLink to='/home'>Home</NavLink> */}
         </Menu.Item>
-        <Menu.Item name='albums' as={Link} to='/explore'
+        <Menu.Item
+          name='albums'
+          as={Link}
+          to='explore'
           // active={activeItem === 'albums'}
           // onClick={this.handleItemClick}
         >
-          Explore
+          {/* <NavLink to='/explore'>Explore</NavLink> */}
         </Menu.Item>
-        <Menu.Item name='friends' as={Link} to='/friends'
+        <Menu.Item
+          name='friends'
+          as={Link}
+          to='friends'
           // active={activeItem === 'friends'}
           // onClick={this.handleItemClick}
         >
           Friends
+          {/* <NavLink to='/friends'>Friends</NavLink> */}
         </Menu.Item>
-        <Menu.Item as={Link} to={url_profile}>
-          <Icon name='user' /> {username}
+        <Menu.Item>
+        {/* <Menu.Item as={Link} to={url_profile}> */}
+          <NavLink to={url_profile}>
+            <Icon name='user' /> {username}
+          </NavLink>
         </Menu.Item>
       </Menu>
     )

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Container, Segment, Card, Message, Dimmer, Loader, Image, Header, Icon, Divider } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Container, Segment, Card, Message, Dimmer, Loader, Image, Header, Icon, Divider, Label } from 'semantic-ui-react';
 
 export default class Content extends Component {
 
@@ -32,17 +32,19 @@ export default class Content extends Component {
               <Divider inverted />
               <Card.Group itemsPerRow={3}>
                 {explores.map((item)=> (
-                  <Card color='green' key={item.id} image='/image.png' header={item.title} 
+                  <Card color='green' key={item.id} image='/image.png' 
+                    header={item.title} 
                     description={(
-                      <NavLink to={'/profile/'+item.userId}>
-                        created by: {item.user.name}
-                      </NavLink>
+                      <Label as={Link} to={`/profile/${item.userId}`} color='teal' image>
+                        <Image src='/matthew.png' />
+                        {item.user.name}
+                      </Label>
                     )} 
                     extra={(
                       <div>
-                        <NavLink to={'/albums/'+item.id}>
+                        <Link to={`/albums/${item.id}`}>
                           <Icon name='picture' circular /> {explores.length} Photos
-                        </NavLink>
+                        </Link>
                       </div>
                     )} 
                   />

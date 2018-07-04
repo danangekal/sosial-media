@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Container, Segment, Card, Message, Dimmer, Loader, Button, Image, Header, Icon, Divider } from 'semantic-ui-react';
 
 export default class Content extends Component {
@@ -34,15 +34,13 @@ export default class Content extends Component {
                 {friends.map((item)=> (
                   <Card color='green' key={item.id} link>
                     <Card.Content>
-                      <NavLink to={'/profile/'+item.id}>  
-                        <Image floated='right' size='mini' src='/matthew.png' />
-                      </NavLink>
-                      <Card.Header><NavLink to={'/profile/'+item.id}>{item.username}</NavLink></Card.Header>
+                      <Image as={Link} to={`/profile/${item.id}`} floated='right' size='mini' src='/matthew.png' />
+                      <Card.Header><Link to={`/profile/${item.id}`}>{item.username}</Link></Card.Header>
                       <Card.Meta>{item.name}</Card.Meta>
                     </Card.Content>
                     <Card.Content extra>
                       <div className='ui two buttons'>
-                        <Button basic color='green' href={'/profile/'+item.id}>
+                        <Button basic color='green' as={Link} to={`/profile/${item.id}`}>
                           Detail Profile
                         </Button>
                       </div>

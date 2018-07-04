@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Segment, Message, Dimmer, Loader, Image, Card, List } from 'semantic-ui-react';
 
 import Comments from './Comments';
@@ -31,9 +32,9 @@ export default class Content extends Component {
                   <Card.Content>
                     <List relaxed='very'>
                       <List.Item>
-                        <Image avatar src='/matthew.png' />
+                        <Image circular size='mini' as={Link} to={`/profile/${post.user.id}`} src='/matthew.png' />
                         <List.Content>
-                          <List.Header as='a' href={'/profile/'+post.user.id}>{post.user.name}</List.Header>
+                          <List.Header as={Link} to={`/profile/${post.user.id}`}>{post.user.name}</List.Header>
                           <List.Description>{post.user.email}</List.Description>
                         </List.Content>
                       </List.Item>
@@ -44,7 +45,7 @@ export default class Content extends Component {
                     <Card.Meta>{post.comments.length} comments</Card.Meta>
                     <Card.Description>{post.body}</Card.Description>
                   </Card.Content>
-                  <Comments comments={post.comments} />
+                  <Comments comments={post.comments} user={post.user}/>
                 </Card>
               </Card.Group>
             </div>

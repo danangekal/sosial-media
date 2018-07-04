@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, Image, List, Button, Form } from 'semantic-ui-react';
 
 export default class Post extends Component {
@@ -26,18 +27,18 @@ export default class Post extends Component {
                 <List relaxed='very'>
                   <List.Item>
                     <List.Content floated='right'>
-                      <Button href={'/posts/'+item.id} color='green'>View</Button>
+                      <Button as={Link} to={`/posts/${item.id}`} color='green'>View</Button>
                     </List.Content>
-                    <Image avatar src='/matthew.png' />
+                    <Image circular size='mini' as={Link} to={`/posts/${item.id}`} src='/matthew.png' />
                     <List.Content>
-                      <List.Header as='a' href={'/profile/'+item.user.id}>{item.user.name}</List.Header>
+                      <List.Header as={Link} to={`/profile/${item.user.id}`}>{item.user.name}</List.Header>
                       <List.Description>{item.user.email}</List.Description>
                     </List.Content>
                   </List.Item>
                 </List>
               </Card.Content>
               <Card.Content extra>
-                <Card.Header as='a' href={'/posts/'+item.id}>{item.title}</Card.Header>
+                <Card.Header as={Link} to={`/posts/${item.id}`}>{item.title}</Card.Header>
                 <Card.Meta>{item.comments.length} comments</Card.Meta>
                 <Card.Description>{item.body}</Card.Description>
               </Card.Content>

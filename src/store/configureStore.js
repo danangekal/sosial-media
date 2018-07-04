@@ -1,6 +1,6 @@
-import { createBrowserHistory } from 'history';
 import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
+import { createBrowserHistory } from 'history';
 import storage from 'redux-persist/lib/storage'
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import logger from 'redux-logger';
@@ -19,7 +19,7 @@ const history = createBrowserHistory();
 
 const store = createStore(
   connectRouter(history)(persistedReducer),
-  applyMiddleware(routerMiddleware(history), logger, promiseMiddleware()),
+  applyMiddleware(routerMiddleware(history), logger, promiseMiddleware())
 );
 
 const persistor = persistStore(store);

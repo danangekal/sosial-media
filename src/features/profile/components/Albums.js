@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Card, Header, Divider, Icon } from 'semantic-ui-react';
 
 export default class Albums extends Component {
@@ -16,7 +16,7 @@ export default class Albums extends Component {
         <Divider inverted />
         <Card.Group itemsPerRow={4}>
           {albums.map((item)=> (
-            <Card color='green' raised key={item.id} image='/image.png' description={item.title} extra={(<div><NavLink to={'/albums/'+item.id}><Icon name='picture' circular /> {item.photos.length} Photos</NavLink></div>)} />
+            <Card color='green' raised key={item.id} image='/image.png' description={item.title} extra={(<div><Link to={`/albums/${item.id}`}><Icon name='picture' circular /> {item.photos.length} Photos</Link></div>)} />
           ))}
         </Card.Group>
       </div>
