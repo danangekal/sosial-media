@@ -2,7 +2,7 @@
   "name": "sosmed-dashboard",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://danangekal.github.io/sosial-media/",
+  "homepage": "https://sosial-media.herokuapp.com/",
   "dependencies": {
     "axios": "^0.18.0",
     "connected-react-router": "^4.3.0",

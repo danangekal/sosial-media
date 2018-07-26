@@ -6,6 +6,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 ## Table of Contents
 - [Features](#features)
 - [Quick Start](#quick-start)
+- [License](#license)
 
 ## Features
 - Simpel project React with custom CRA (Create React App)
@@ -17,20 +18,23 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ### Install dependencies:
 ```
-yarn install
+yarn install or npm install
 ```
 
 ### Run start:
 ```
-yarn start
+yarn start or npm run start
 ```
 
 ### Run build:
 ```
-yarn build
+yarn build or npm run build
 ```
 
 ### Run test:
 ```
-yarn test
+yarn test or npm run test
 ```
+
+## License
+The Project is open-sourced project licensed under the [MIT license](http://opensource.org/licenses/MIT) 
