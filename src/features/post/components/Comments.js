@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Header, Form, Button, Comment } from 'semantic-ui-react';
+import { Field, reduxForm } from 'redux-form';
+import Validator from 'validatorjs';
+import lang from 'validatorjs/src/lang';
+import en from 'validatorjs/src/lang/en';
 
-export default class Comments extends Component {
+import inputField from '../../../components/inputField';
+
+lang._set('en', en);
+
+const validate = values => {
+  const rules = {
+      body: 'required',
+  };
+
+  const validator = new Validator(values, rules);
+  if(validator.fails()){
+      return validator.errors.all();
+  }
+}
+
+class Comments extends Component {
 
   render() {
-    const { comments, user } = this.props;
+    const { comments, user, handleSubmit } = this.props;
 
     return(
       <Card.Content extra>
@@ -25,8 +44,14 @@ export default class Comments extends Component {
                 </Comment.Content>
               </Comment>
           ))}
-          <Form reply>
-            <Form.TextArea />
+          <Form onSubmit={ handleSubmit } reply>
+              <Field
+                name='body'
+                label='Body'
+                type='text'
+                placeholder='Body'
+                component={inputField}
+              />
             <Button content='Add Comment' labelPosition='left' icon='edit' primary />
           </Form>
         </Comment.Group>
@@ -34,3 +59,16 @@ export default class Comments extends Component {
     )
   }
 }
+
+const ReduxForm = reduxForm({
+  form: 'post',
+  validate,
+  initialValues: {
+    name: 'tes',
+    body: '',
+    postId: 1,
+    email: 'Sincere@april.biz'
+  }
+})(Comments)
+
+export default ReduxForm;

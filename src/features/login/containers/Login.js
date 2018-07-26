@@ -1,54 +1,38 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { loginUser } from '../actions/login';
 
-// import Navbar from '../components/Navbar';
-import Content from '../components/Content';
-// import Footer from '../../../components/Footer';
+import Navbar from '../components/Navbar';
 
 class Login extends Component {
   
-  handleSubmitLogin = (value) => {
-    alert('tes');
-    // this.props.actions.loginUser(value)
-    // .then((result) => {
-    //   return <Redirect to='/home' />;
-    // }).catch((error) => {
-    //   if (error.response) {
-    //     alert(error.response.request._response); 
-    //   } else {
-    //     alert(error.message);
-    //   }
+  handleSubmit = (value) => {
+    this.props.dispatch(loginUser(value.email))
+    .then((result) => {
+      console.log(result.value.statusText);
 
-    //   return false;
-    // })
+      return <Redirect to='/home' />;
+    }).catch((error) => {
+      if (error.response) {
+        alert(error.response.request._response); 
+      } else {
+        alert(error.message);
+      }
+
+      return false;
+    })
   }
 
   render() {
 
     return (
       <div>
-        {/* <Navbar {...this.props} onSubmit={this.handleSubmitLogin} /> */}
-        <Content />
-        {/* <Footer/> */}
+        <Navbar {...this.props} onSubmit={this.handleSubmit} />
       </div>
     )
   }
 }
 
-const mapStateToProps = (state)=> {
-  return {
-    loginReducer: state.loginReducer
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(loginUser, dispatch)
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect()(Login);

@@ -9,10 +9,11 @@ class Post extends Component {
   
   render() {
     const postReducer = this.props.postReducer;
+    const id = this.props.match.params.id;
 
     return (
       <div>
-        <Content postReducer={postReducer} />
+        <Content postReducer={postReducer} id={id} />
       </div>
     )
   }

@@ -1,22 +1,57 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Card, Image, List, Button, Form } from 'semantic-ui-react';
+import { Card, Image, List, Button, Form, Segment } from 'semantic-ui-react';
+import { Field, reduxForm } from 'redux-form';
+import Validator from 'validatorjs';
+import lang from 'validatorjs/src/lang';
+import en from 'validatorjs/src/lang/en';
 
-export default class Post extends Component {
+import inputField from '../../../components/inputField';
 
+lang._set('en', en);
+
+const validate = values => {
+  const rules = {
+      title: 'required',
+      body: 'required'
+  };
+
+  const validator = new Validator(values, rules);
+  if(validator.fails()){
+      return validator.errors.all();
+  }
+}
+
+
+class Post extends Component {
+  
   render() {
-    const { handleSubmitPost, posts } = this.props;
+    const { handleSubmit, posts } = this.props;
 
     return(      
       <div>
         <Card.Group>
           <Card fluid color='green'>
             <Card.Content>
-              <Form onSubmit={handleSubmitPost} reply>
-                <Form.Input />
-                <Form.TextArea />
+              <Segment>
+              <Form className='form-post' onSubmit={ handleSubmit } reply>
+                <Field
+                  name='title'
+                  label='Title'
+                  type='text'
+                  placeholder='Title'
+                  component={inputField}
+                />
+                <Field
+                  name='body'
+                  label='Body'
+                  type='text'
+                  placeholder='Body'
+                  component={inputField}
+                />
                 <Button content='Send Post' type='submit' labelPosition='left' icon='edit' primary />
               </Form>
+              </Segment>
             </Card.Content>
           </Card>
         </Card.Group>
@@ -50,13 +85,14 @@ export default class Post extends Component {
   }
 }
 
-// const ReduxForm = reduxForm({
-//   form: 'post',
-//   // validate,s
-//   initialValues: {
-//     title: 'tes',
-//     body: ''
-//   }
-// })(Post)
+const ReduxForm = reduxForm({
+  form: 'post',
+  validate,
+  initialValues: {
+    title: 'tes',
+    body: '',
+    userId: 1
+  }
+})(Post)
 
-// export default ReduxForm;
+export default ReduxForm;

@@ -1,9 +1,11 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
+import NavbarLogin from '../features/login/containers/Login';
 import Footer from '../components/Footer';
-import Login from '../features/login/containers/Login';
+import Signup from '../features/login/containers/Signup';
 import Home from '../features/home/containers/Home';
 import Post from '../features/post/containers/Post';
 import Explore from '../features/explore/containers/Explore';
@@ -13,23 +15,30 @@ import Friend from '../features/friend/containers/Friend';
 import Profile from '../features/profile/containers/Profile';
 
 // The Routing Component providing all the routing Configuration
-export const Routes = (props) => {
-  const login = {id: 1, name: 'Leanne Graham', username: 'Bret', email: 'Sincere@april.biz'};
+const Routes = (props) => {
+  const user = {id: 1, name: 'Leanne Graham', username: 'Bret', email: 'Sincere@april.biz'};
+  // const { user } = props.loginReducer;
+  const { id } = user;
 
   return (
     <Router>
       <div>
-        <Navbar login={login}/>
+        {id? (
+          <Navbar user={user}/>
+        ): (
+          <NavbarLogin/>
+        )}
         <div>
           <Switch>
             <Route exact path='/' render={() => (
-              login ? (
+              id? (
                 <Redirect to='/home'/>
               ) : (
-                <Login/>
+                <Signup/>
               )
             )}/>
             <Route path='/home' component={Home} />
+            <Route path='/signup' component={Signup} />
             <Route path='/posts/:id' component={Post} />
             <Route path='/explore' component={Explore} />
             <Route path='/albums/:id' component={Album} />
@@ -43,3 +52,11 @@ export const Routes = (props) => {
     </Router>
   )
 }
+
+const mapStateToProps = (state)=> {
+  return {
+    loginReducer: state.loginReducer
+  }
+}
+
+export default connect(mapStateToProps)(Routes);

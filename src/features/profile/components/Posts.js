@@ -5,7 +5,7 @@ import { Card, Image, List, Button } from 'semantic-ui-react';
 export default class Post extends Component {
 
   render() {
-    const { posts, profile } = this.props;
+    const { posts, profile, deletePostClick } = this.props;
 
     return(      
       <div>
@@ -17,7 +17,7 @@ export default class Post extends Component {
                   <List.Item>
                     <List.Content floated='right'>
                       <Button as={Link} to={`/posts/${item.id}`} color='green'>View</Button>
-                      <Button color='red'>Delete</Button>
+                      <Button onClick={ deletePostClick } color='red'>Delete</Button>
                     </List.Content>
                     <Image circular size='mini' as={Link} to={`/profile/${profile.id}`} src={process.env.PUBLIC_URL + '/matthew.png'} />
                     <List.Content>

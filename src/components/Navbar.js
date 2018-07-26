@@ -12,9 +12,8 @@ export default class Navbar extends Component {
   }
 
   render() {
-    // const { activeItem } = this.state;
-    const username = (this.props.login)? this.props.login.username:'';
-    const id = (this.props.login)? this.props.login.id:'1';
+    const { activeItem } = this.state;
+    const { id, username } = this.props.user;
     const url_profile = `/profile/${id}`;
 
     return (
@@ -26,24 +25,27 @@ export default class Navbar extends Component {
           </Menu.Item>
         </Menu.Menu>
         <Menu.Item name='home' as={Link} to='/home'
-          // active={activeItem === 'home'}
-          // onClick={this.handleItemClick}
+          active={activeItem === 'home'}
+          onClick={this.handleItemClick}
         >
           Home
         </Menu.Item>
-        <Menu.Item name='albums' as={Link} to='/explore'
-          // active={activeItem === 'albums'}
-          // onClick={this.handleItemClick}
+        <Menu.Item name='explore' as={Link} to='/explore'
+          active={activeItem === 'explore'}
+          onClick={this.handleItemClick}
         >
           Explore
         </Menu.Item>
         <Menu.Item name='friends' as={Link} to='/friends'
-          // active={activeItem === 'friends'}
-          // onClick={this.handleItemClick}
+          active={activeItem === 'friends'}
+          onClick={this.handleItemClick}
         >
           Friends
         </Menu.Item>
-        <Menu.Item as={Link} to={url_profile}>
+        <Menu.Item name='profile' as={Link} to={url_profile}
+          active={activeItem === 'profile'}
+          onClick={this.handleItemClick}
+        >
           <Icon name='user' /> {username}
         </Menu.Item>
       </Menu>

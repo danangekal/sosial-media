@@ -1,10 +1,32 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Container, Segment, Message, Dimmer, Loader, Image, Card, List } from 'semantic-ui-react';
+
+import { createComment, readPost } from '../actions/post';
 
 import Comments from './Comments';
 
-export default class Content extends Component {
+class Content extends Component {
+
+  handleSubmit = (value) => {
+    const id  = this.props.id;
+    const params = `/${id}?_expand=user&_embed=comments&_order=desc`;
+
+    this.props.dispatch(createComment(value))
+    .then((result) => {
+      alert(result.value.statusText);
+      this.props.dispatch(readPost(params));
+    }).catch((error) => {
+      if (error.response) {
+        alert(error.response.request._response); 
+      } else {
+        alert(error.message);
+      }
+
+      return false;
+    })
+  }
 
   render() {
     const { post, isError, isLoading } = this.props.postReducer;
@@ -45,7 +67,7 @@ export default class Content extends Component {
                     <Card.Meta>{post.comments.length} comments</Card.Meta>
                     <Card.Description>{post.body}</Card.Description>
                   </Card.Content>
-                  <Comments comments={post.comments} user={post.user}/>
+                  <Comments onSubmit={this.handleSubmit} comments={post.comments} user={post.user}/>
                 </Card>
               </Card.Group>
             </div>
@@ -55,3 +77,5 @@ export default class Content extends Component {
     )
   }
 }
+
+export default connect()(Content);

@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 
 import { Menu, Icon, Form } from 'semantic-ui-react';
 import { Field, reduxForm } from 'redux-form';
 import Validator from 'validatorjs';
 import lang from 'validatorjs/src/lang';
 import en from 'validatorjs/src/lang/en';
-
-import * as LoginActions from '../actions/login';
 
 import inputField from '../../../components/inputField';
 
@@ -29,24 +24,8 @@ const validate = values => {
 
 class Navbar extends Component {
 
-  handleSubmitLogin = (value) => {
-    // console.table(value);
-    // this.props.actions.loginUser(value)
-    // .then((result) => {
-    //   // return <Redirect to='/home' />;
-    // }).catch((error) => {
-    //   if (error.response) {
-    //     alert(error.response.request._response); 
-    //   } else {
-    //     alert(error.message);
-    //   }
-
-    //   return false;
-    // })
-  }
-
   render() {
-    // const { handleSubmitLogin } = this.props;
+    const { handleSubmit } = this.props;
 
     return (
       <Menu className='menu-primary-login' top='true' inverted secondary>
@@ -54,12 +33,8 @@ class Navbar extends Component {
           <Menu.Item>
             <Icon name='universal access' size='huge' />
           </Menu.Item>
-          <Menu.Item 
-            name='home' 
-            href='/home'
-          />
         </Menu.Menu>
-        <Form className='form-login' onSubmit={this.handleSubmitLogin} inverted>
+        <Form className='form-login' onSubmit={ handleSubmit } inverted>
           <Form.Group widths='equal'>
             <Field
               name='email'
@@ -93,10 +68,4 @@ const ReduxForm = reduxForm({
   }
 })(Navbar)
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(LoginActions, dispatch)
-  }
-}
-
-export default connect(mapDispatchToProps)(ReduxForm);
+export default ReduxForm;
