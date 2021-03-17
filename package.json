@@ -5,7 +5,7 @@
   "homepage": "https://sosial-media.herokuapp.com/",
   "dependencies": {
     "axios": "^0.18.0",
-    "connected-react-router": "^4.3.0",
+    "connected-react-router": "^6.9.1",
     "font-awesome": "^4.7.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
