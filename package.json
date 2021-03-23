@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://sosial-media.herokuapp.com/",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "connected-react-router": "^4.3.0",
     "font-awesome": "^4.7.0",
     "react": "^16.4.1",
